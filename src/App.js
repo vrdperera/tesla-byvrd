@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 // router
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-// componnets
+// import componnets
 import Header from './components/header';
+import Menu from './components/menu';
 
 function App() {
   // states
@@ -14,6 +15,7 @@ function App() {
     <BrowserRouter>
       <div className="app">
         <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+        {isMenuOpen && <Menu />}
       </div>
     </BrowserRouter>
   );

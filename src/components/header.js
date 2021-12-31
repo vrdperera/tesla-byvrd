@@ -71,8 +71,8 @@ const HeaderContainer = styled.div`
   & .header__links,
   .header__right {
     display: flex;
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 600;
     line-height: 2.1rem;
     gap: 3rem;
     align-items: center;
