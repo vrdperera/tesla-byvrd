@@ -59,11 +59,12 @@ const HeaderContainer = styled.div`
   right: 0;
   justify-content: space-between;
   align-items: center;
-  padding: 2.5rem;
+  padding: 1.5rem;
 
   & .header__logo-img {
     object-fit: contain;
     flex: 1;
+    height: 1.2rem;
     width: 12rem;
     margin-right: 10rem;
   }

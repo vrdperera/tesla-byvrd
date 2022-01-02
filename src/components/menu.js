@@ -1,6 +1,3 @@
-// router
-import { Link } from 'react-router-dom';
-
 // styled-components
 import styled from 'styled-components';
 
