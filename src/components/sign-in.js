@@ -10,14 +10,37 @@ import ButtonSecondary from './buttonSecondary';
 // material-ui
 import LanguageOutlinedIcon from '@material-ui/icons/LanguageOutlined';
 
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../lib/firebase';
+import { useDispatch } from 'react-redux';
+import { login } from '../features/userSlice';
+import { useHistory } from 'react-router-dom';
+
 // component
 export default function Login() {
   // states
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-  const signIn = (event) => {
+  const signIn = async (event) => {
     event.preventDefault();
+
+    try {
+      const user = await signInWithEmailAndPassword(auth, email, password);
+
+      dispatch(
+        login({
+          email: user.user.email,
+          uid: user.user.uid,
+          displayName: user.user.displayName,
+        })
+      );
+      history.push('/tesla-user');
+    } catch ({ message }) {
+      console.log(message);
+    }
   };
 
   // ui

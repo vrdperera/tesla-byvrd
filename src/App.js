@@ -7,13 +7,13 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 // import componnets
 import Header from './components/header';
-import Hero from './components/hero';
-import Login from './components/login';
 import Menu from './components/menu';
+import Hero from './components/hero';
+import SignIn from './components/sign-in';
+import SignUp from './components/sign-up';
 
 function App() {
   const user = useSelector(selectUser);
-  console.log(user);
 
   // states
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,9 +27,14 @@ function App() {
           <Hero />
         </Route>
 
-        <Route exact path="/login">
-          {user ? <Redirect to="/tesla-user" /> : <Login />}
-          <Login />
+        <Route exact path="/signin">
+          {user ? <Redirect to="/tesla-user" /> : <SignIn />}
+          <SignIn />
+        </Route>
+
+        <Route exact path="/signup">
+          {user ? <Redirect to="/tesla-user" /> : <SignIn />}
+          <SignUp />
         </Route>
       </Switch>
     </BrowserRouter>

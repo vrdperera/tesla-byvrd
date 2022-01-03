@@ -32,10 +32,10 @@ export default function Header({ isMenuOpen, setIsMenuOpen }) {
       </div>
 
       <div className="header__right">
-        <Link to="/" className={isMenuOpen && 'header__link-hidden'}>
+        <Link to="/" className={isMenuOpen ? 'header__link-hidden' : ''}>
           Shop
         </Link>
-        <Link to="/login" className={isMenuOpen && 'header__link-hidden'}>
+        <Link to="/signin" className={isMenuOpen ? 'header__link-hidden' : ''}>
           Tesla Account
         </Link>
         <div
