@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectUser } from './features/userSlice';
 
 // router
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
@@ -10,6 +12,9 @@ import Login from './components/login';
 import Menu from './components/menu';
 
 function App() {
+  const user = useSelector(selectUser);
+  console.log(user);
+
   // states
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -23,6 +28,7 @@ function App() {
         </Route>
 
         <Route exact path="/login">
+          {user ? <Redirect to="/tesla-user" /> : <Login />}
           <Login />
         </Route>
       </Switch>
