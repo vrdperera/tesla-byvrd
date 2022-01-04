@@ -37,7 +37,7 @@ export default function Login() {
           displayName: user.user.displayName,
         })
       );
-      history.push('/tesla-user');
+      history.push('/tesla-account');
     } catch ({ message }) {
       console.log(message);
     }
@@ -45,9 +45,9 @@ export default function Login() {
 
   // ui
   return (
-    <LoginContainer>
-      <div className="login__header">
-        <div className="login__logo">
+    <SignInContainer>
+      <div className="SignIn__header">
+        <div className="SignIn__logo">
           <Link to="/">
             <img
               src="https://assets.website-files.com/5e8fceb1c9af5c3915ec97a0/5ec2f037975ed372da9f6286_Tesla-Logo-PNG-HD.png"
@@ -55,14 +55,14 @@ export default function Login() {
             />
           </Link>
         </div>
-        <div className="login__language">
+        <div className="SignIn__language">
           <LanguageOutlinedIcon /> <span>en-US</span>
         </div>
       </div>
 
-      <div className="login__info">
+      <div className="SignIn__info">
         <h1>Sign In</h1>
-        <form className="login__form">
+        <form className="SignIn__form">
           <label htmlFor="email">Email Address</label>
           <input
             type="email"
@@ -85,7 +85,7 @@ export default function Login() {
 
           <ButtonPrimary name="Sign In" type="submit" onClicked={signIn} />
         </form>
-        <div className="login__divider">
+        <div className="SignIn__divider">
           <hr />
           <span>OR</span>
           <hr />
@@ -94,12 +94,12 @@ export default function Login() {
           <ButtonSecondary name="Create Account" />
         </Link>
       </div>
-    </LoginContainer>
+    </SignInContainer>
   );
 }
 
 // css styles
-const LoginContainer = styled.div`
+const SignInContainer = styled.div`
   padding: 2.5rem;
   padding-top: 15px;
   height: 100vh;
@@ -107,7 +107,7 @@ const LoginContainer = styled.div`
   flex-direction: column;
   gap: 5rem;
 
-  .login__header {
+  .SignIn__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -115,7 +115,7 @@ const LoginContainer = styled.div`
     top: 0;
   }
 
-  .login__logo img {
+  .SignIn__logo img {
     object-fit: contain;
     flex: 1;
     height: 1.2rem;
@@ -123,11 +123,11 @@ const LoginContainer = styled.div`
     margin-right: 10rem;
   }
 
-  .login__language .MuiSvgIcon-root {
+  .SignIn__language .MuiSvgIcon-root {
     width: 24px;
     height: 24px;
   }
-  .login__language {
+  .SignIn__language {
     display: flex;
     gap: 5px;
     align-items: center;
@@ -137,15 +137,15 @@ const LoginContainer = styled.div`
     font-size: 1.5rem;
     transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
-  .login__language:hover {
+  .SignIn__language:hover {
     background-color: hsla(0, 0%, 50.2%, 0.125);
   }
 
-  .login__language > span {
+  .SignIn__language > span {
     font-weight: 500;
   }
 
-  .login__info {
+  .SignIn__info {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -153,26 +153,26 @@ const LoginContainer = styled.div`
     margin-inline: auto;
   }
 
-  .login__info > h1 {
+  .SignIn__info > h1 {
     font-weight: 600;
     font-size: 4rem;
     margin-bottom: 2rem;
   }
 
-  .login__form {
+  .SignIn__form {
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
   }
 
-  .login__form > label {
+  .SignIn__form > label {
     color: #5c5e62;
     font-weight: 600;
     font-size: 1.5rem;
     padding-left: 2rem;
   }
 
-  .login__form > input {
+  .SignIn__form > input {
     margin-bottom: 30px;
     background-color: #f4f4f4;
     border: 1px solid #f4f4f4;
@@ -183,12 +183,12 @@ const LoginContainer = styled.div`
     font-weight: 600;
   }
 
-  .login__form > input:focus {
+  .SignIn__form > input:focus {
     border: 1px solid #d6d6d7;
     transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
-  .login__form > button {
+  .SignIn__form > button {
     background-color: #3e6ae1;
     border: none;
     padding: 1.2rem 4rem;
@@ -202,30 +202,30 @@ const LoginContainer = styled.div`
     transition: all 0.4s;
   }
 
-  .login__form > button:hover {
+  .SignIn__form > button:hover {
     background-color: #3457b1;
   }
 
-  .login__divider {
+  .SignIn__divider {
     display: flex;
     justify-content: space-between;
     margin-bottom: 2rem;
     align-items: center;
   }
 
-  .login__divider > hr {
+  .SignIn__divider > hr {
     width: 40%;
     height: 0;
     opacity: 0.3;
   }
 
-  .login__divider > span {
+  .SignIn__divider > span {
     font-weight: 500;
     color: #5c5e62;
     font-size: 1.6rem;
   }
 
-  .login__info > a > button {
+  .SignIn__info > a > button {
     background-color: transparent;
     border: 3px solid #171a20;
     width: 100%;
@@ -239,7 +239,7 @@ const LoginContainer = styled.div`
     outline: none;
   }
 
-  .login__info > a > button:hover {
+  .SignIn__info > a > button:hover {
     background-color: #171a20;
     color: white;
   }

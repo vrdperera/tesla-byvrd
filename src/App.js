@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectUser } from './features/userSlice';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, logout, selectUser } from './features/userSlice';
 
 // router
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
@@ -11,9 +11,30 @@ import Menu from './components/menu';
 import Hero from './components/hero';
 import SignIn from './components/sign-in';
 import SignUp from './components/sign-up';
+import TeslaAccount from './components/teslaAccount';
+
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './lib/firebase';
 
 function App() {
   const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (userAuth) => {
+      if (userAuth) {
+        dispatch(
+          login({
+            email: userAuth.email,
+            uid: userAuth.uid,
+            displayName: userAuth.displayName,
+          })
+        );
+      } else {
+        dispatch(logout());
+      }
+    });
+  }, [dispatch]);
 
   // states
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,13 +49,25 @@ function App() {
         </Route>
 
         <Route exact path="/signin">
-          {user ? <Redirect to="/tesla-user" /> : <SignIn />}
-          <SignIn />
+          {user ? <Redirect to="/tesla-account" /> : <SignIn />}
         </Route>
 
         <Route exact path="/signup">
-          {user ? <Redirect to="/tesla-user" /> : <SignIn />}
           <SignUp />
+        </Route>
+
+        <Route exact path="/tesla-account">
+          {!user ? (
+            <Redirect to="/signin" />
+          ) : (
+            <>
+              <TeslaAccount
+                isMenuOpen={isMenuOpen}
+                setIsMenuOpen={setIsMenuOpen}
+              />
+              {isMenuOpen && <Menu />}
+            </>
+          )}
         </Route>
       </Switch>
     </BrowserRouter>

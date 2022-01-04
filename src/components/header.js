@@ -93,8 +93,8 @@ const HeaderContainer = styled.div`
       display: flex;
       justify-content: center;
       cursor: pointer;
-      width: 24px;
-      height: 24px;
+      width: 2.4rem;
+      height: 2.4rem;
       z-index: 2;
     }
   }
